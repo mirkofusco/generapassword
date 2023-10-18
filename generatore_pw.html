@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore pw</title>
+    <style>
+        div {
+            text-align: center;
+            padding: 5%;
+        }
+
+        button {
+            box-shadow: 3px 4px 0px 0px #899599;
+            background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+            background-color: #ededed;
+            border-radius: 15px;
+            border: 1px solid #d6bcd6;
+            display: inline-block;
+            cursor: pointer;
+            color: #000708;
+            font-family: Arial;
+            font-size: 25px;
+            padding: 7px 25px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #e1e2ed;
+
+        }
+
+        h1 {
+            color: white;
+        }
+
+        body {
+            background-color: rgb(51, 49, 49);
+        }
+
+        p {
+            color: white;
+            
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+            background-color: #bab1ba;
+        }
+
+        button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        input {
+            width: 25%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Genera Password</h1>
+    </div>
+
+
+    <div>
+        <p >
+            <h1 id="risultato"></h1>
+
+        </p>
+
+        <div>
+            <button id="myButton">GENERA</button>
+            <p>
+                <input type="text " id="inserireNumero">
+                <hr>
+            </p>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script>
+        //creo le costanti 
+         const caratteri = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKL<ZXCVBNM123456789|!£$%&";
+        const risultato = document.querySelector("#risultato");
+        const myButton = document.querySelector("#myButton");
+        const inserireNumero = document.querySelector("#inserireNumero");
+
+        //aggiungo evento al bottone
+
+        myButton.addEventListener("click", () => {
+            const passwordLength = parseInt(inserireNumero.value);
+            
+            const generatedPassword = generatePassword(passwordLength);
+            risultato.textContent = generatedPassword;
+        });
+        //creo la funzione per generare in modo randomico 
+
+        function generatePassword(length) {
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * caratteri.length);
+                password += caratteri.charAt(randomIndex);
+            }
+            return password;
+        }
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
